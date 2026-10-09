@@ -20,14 +20,14 @@ def store_report(engine):
         products_count = conn.execute(text("SELECT COUNT(*) FROM products")).scalar()
         orders_count = conn.execute(text("SELECT COUNT(*) FROM orders")).scalar()
 
-        print("--- Store Dashboard")
+        print("=== Store Dashboard ===")
         print(f"Users: {users_count} | Products: {products_count} | Orders: {orders_count}")
 
         # 2. Catalog
         print("\nCatalog:")
         catalog = conn.execute(text("SELECT name, price, stock from products ORDER BY name")).fetchall()
         for name, price, stock in catalog:
-            print(f'{name:<10} ${price} (currently in stock: {stock})')
+            print(f'{name:<10} ${price} (stock: {stock})')
 
         # 3. Top customers
         print("\nTop customers:")
